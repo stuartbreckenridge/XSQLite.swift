@@ -2,7 +2,7 @@
 import PackageDescription
 
 let package = Package(
-    name: "SQLite.swift",
+    name: "XSQLite.swift",
     platforms: [
         .iOS(.v11),
         .macOS(.v10_13),
@@ -11,23 +11,23 @@ let package = Package(
     ],
     products: [
         .library(
-            name: "SQLite",
-            targets: ["SQLite"]
+            name: "XSQLite",
+            targets: ["XSQLite"]
         )
     ],
     targets: [
         .target(
-            name: "SQLite",
+            name: "XSQLite",
             exclude: [
                 "Info.plist"
             ]
         ),
         .testTarget(
-            name: "SQLiteTests",
+            name: "XSQLiteTests",
             dependencies: [
-                "SQLite"
+                "XSQLite"
             ],
-            path: "Tests/SQLiteTests",
+            path: "Tests/XSQLiteTests",
             exclude: [
                 "Info.plist"
             ],
@@ -40,9 +40,9 @@ let package = Package(
 
 #if os(Linux)
 package.dependencies = [
-    .package(url: "https://github.com/stephencelis/CSQLite.git", from: "0.0.3")
+    .package(url: "https://github.com/stephencelis/CXSQLite.git", from: "0.0.3")
 ]
 package.targets.first?.dependencies += [
-    .product(name: "CSQLite", package: "CSQLite")
+    .product(name: "CXSQLite", package: "CXSQLite")
 ]
 #endif
